@@ -50,4 +50,10 @@ const requestHandler=(request,response)=>{
     }
 }
 
-module.exports=requestHandler;
+        //3 ways to export the object 
+        
+//module.exports=requestHandler;
+
+// module.exports={handler:requestHandler};
+
+module.exports.handler = requestHandler;
