@@ -1,22 +1,22 @@
 const express = require('express');
-const bodyParser= require('body-parser')
+const bodyParser= require('body-parser');
+
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({extended:false}));  //parse theform data from body
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-//added '/add-product' middleware prior to '/' middleware. else everytime even for '/add-prod...or other '/' middleware works
-app.use('/add-product',(req,res,next) => {
-    res.send('<form action="/product">Product Name:<input type="text" name="title" /><br />Product Size:<input type="text" name="size" /><br /><button type="submit">Add Product</button></form>') 
-});
+app.use(bodyParser.urlencoded({extended:true}));  //parse theform data from body
 
-app.use('/product',(req,res,next) => {
-    console.log(req.body);
-    res.redirect('/');
-});
+//registering routes to app object, order of placing matters(if used .use in router)
+    app.use(adminRoutes);       
+    app.use(shopRoutes);
 
-app.use('/',(req,res,next) => {
-    res.send('<h1>Hi this is HomePage.</h1>')
-});
+    app.use(express.static(__dirname + '/public')); 
+//handling 404 error pages
+app.use((req,res,next)=>{
+    res.status(404).send('<h2>Page not found</h2>')
+})
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
