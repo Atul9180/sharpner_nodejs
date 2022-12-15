@@ -34,6 +34,8 @@
 
 /* form css */
 body{
+    margin:0;
+    padding: 0;
     background-image: url("https://static1.bigstockphoto.com/5/4/2/large1500/245078380.jpg");
 }
 .cFormBox{

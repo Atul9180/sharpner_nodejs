@@ -21,8 +21,8 @@ const port = 3000;
 //registering routes to app object, order of placing matters(if used .use in router)
     app.use(adminRoutes);       
     app.use(shopRoutes);
+    app.use(contactusRoute);    
     app.use(error404Route);
-    app.use(contactusRoute);
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
