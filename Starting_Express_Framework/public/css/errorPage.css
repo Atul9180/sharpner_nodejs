@@ -2,20 +2,22 @@
 body{
     margin:0;
     padding:0;
-    background-color: #C6E4FF;
+    background-color: #0c151d;
 }
 .errorBox{
     display: block;
     text-align: center;
-    margin-top:50px;
+    margin-top:45px;
     width:100%;
     height: 100%;
 }
 h1{
-    font-size:xx-large;
+    margin-top:0;
+    font-size:-webkit-xxx-large;
+    color: aliceblue;
 }
 
-/* navbar css */
+/* navbar css 
 .main-header{
     width: 100%;
     height: 3.5rem;
@@ -47,4 +49,4 @@ h1{
 .main-header_item a:active,
 .main-header_item a.active {
     color:blue;
-}
+} */

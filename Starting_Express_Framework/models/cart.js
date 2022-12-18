@@ -7,6 +7,7 @@ const p = path.join(
   'cart.json'
 );
 
+//constructor allows creating new cart
 module.exports = class Cart {
   static addProduct(id, productPrice) {
     // Fetch the previous cart
@@ -64,6 +65,7 @@ module.exports = class Cart {
   static getCart(cb) {
     fs.readFile(p, (err, fileContent) => {
       const cart = JSON.parse(fileContent);
+      console.log(cart)
       if (err) {
         cb(null);
       } else {
