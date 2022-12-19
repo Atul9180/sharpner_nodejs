@@ -8,7 +8,7 @@ router.get("/",(req,res,next)=>{
             data = 'no message available..';
         }
         res.send(`<div>${data}</div><br /><hr /><h5>Write your Message here:</h5>
-        <form action="/" method="POST" onSubmit="document.getElementById('username').value=localStorage.getItem('username')">
+        <form action="/" method="POST" onSubmit="document.getElementById('username').value=JSON.parse(localStorage.getItem('username'))">
         <input id="message" type="text" name="message" required />
         <input id="username" type="hidden" name"username" /><br />
         <button type="submit">Send</button>
@@ -18,7 +18,7 @@ router.get("/",(req,res,next)=>{
 
  router.post("/",(req,res)=>{
     console.log(req.body.username)
-    console.log(req.body.message)    
+    console.log("testing",req.body)    
     fs.writeFile("username.txt",`${req.body.username}: ${req.body.message} \n`,{flag: 'a'}, (err)=>err?console.log(err):res.redirect("/"))
 })
 
