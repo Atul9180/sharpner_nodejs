@@ -20,7 +20,7 @@ const error404Route = require('./routes/error404');
 // db -------!SECTION //will be of promises form so uses {.then and .catch}
 db.execute('SELECT * FROM products')
     .then(result=>{
-        console.log(result[0][0].title);
+        console.log(result[0][0].title);        //result[dataArray][dataArrayObject].objectValue
     })
     .catch(error=>{
         console.log(err);
