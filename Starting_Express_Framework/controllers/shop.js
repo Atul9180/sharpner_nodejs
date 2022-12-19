@@ -16,7 +16,7 @@ const Cart = require('../models/cart');
   };
 
 
-//---Product Detail page get detailed product controller -->getting product array but expecting single obj so use[0]
+//---Product Detail page get detailed product controller -->getting array but expecting obj so use[0]
   exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
     Product.findById(prodId)
@@ -27,7 +27,7 @@ const Cart = require('../models/cart');
         path: '/products'
       });
     })
-    .catch(err=>console.log('error in fetch id'))
+    .catch(err=>console.log(err))
   };
 
 

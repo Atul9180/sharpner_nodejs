@@ -9,9 +9,15 @@ module.exports = class Product {
     this.price = price;
   }
 
+
+//insert into database table products
   save() {
-    
+    return db.execute(
+      'INSERT INTO products (title,imageUrl,description,price) VALUES (?,?,?,?)',
+      [this.title,this.imageUrl,this.description,this.price] );
   }
+  
+
 //Delete product from products table
     static deleteById(id) {
       return db.execute('DELETE FROM products WHERE products.id=?',[id])
