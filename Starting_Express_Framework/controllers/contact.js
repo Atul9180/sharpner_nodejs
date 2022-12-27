@@ -6,7 +6,7 @@ exports.getContactFormController = (req,res,next) => {
 };
 
 exports.postContactFormController = (req,res,next) => {
-   console.log(req.body);
+   
    res.redirect('/success');
 };
 
