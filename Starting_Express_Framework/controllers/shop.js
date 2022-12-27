@@ -5,9 +5,9 @@ const Cart = require('../models/cart');
 //---Products page get all products controller
   exports.getProducts = (req, res, next) => {
     Product.findAll()
-    .then((productsData) => {
+    .then((products) => {
         res.render('shop/product-list', {
-        prods: productsData,
+        prods: products,
         pageTitle: 'All Products',
         path: '/products'
       });
@@ -34,9 +34,9 @@ const Cart = require('../models/cart');
 //---used fndAll returned promise to populated data from products table
   exports.getIndex = (req, res, next) => {
     Product.findAll()
-      .then((productsData)=>{
+      .then((products)=>{
           res.render('shop/index', {
-            prods: productsData,
+            prods: products,
             pageTitle: 'Shop',
             path: '/'
           });
@@ -80,10 +80,7 @@ exports.postCart = (req, res, next) => {
 
 exports.postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-
-  
-
-  Product.findByPk(prodId, product => {
+   Product.findByPk(prodId, product => {
     Cart.deleteProduct(prodId, product.price);
     res.redirect('/cart');
   });
